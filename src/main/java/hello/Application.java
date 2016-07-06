@@ -2,8 +2,12 @@ package hello;
 
 import model.FirstSingleton;
 import org.joda.time.LocalTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import sun.awt.resources.awt;
+import view.AwtControlDemo;
 
 @SpringBootApplication
 public class Application {
@@ -11,8 +15,13 @@ public class Application {
         Greeter greeter = new Greeter();
 		LocalTime currentTime = new LocalTime();
         FirstSingleton Ston = FirstSingleton.getInstance();
-        System.out.println( greeter.sayHello() );
-		System.out.println( "The current local time is: " + currentTime );
+        AwtControlDemo  awtControlDemo = new AwtControlDemo();
+        //System.out.println( greeter.sayHello() );
+		//System.out.println( "The current local time is: " + currentTime );
+        Logger logger = LoggerFactory.getLogger( Application.class );
+        logger.info( greeter.sayHello() );
+        logger.info( "Application is starting" );
+        awtControlDemo.showCanvasDemo( "The current local time is: " + currentTime );
         Ston.hello();
         SpringApplication.run(Application.class, args);
 
